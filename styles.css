@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: #0d0d0d;
+  color: #ffffff;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Star Canvas */
+#stars {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: #0d0d0d;
+}
+
+/* Typing Intro */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.intro-text {
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 0 0 15px #ff00cc;
+}
+
+.cursor {
+  display: inline-block;
+  color: #ff66ff;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Layout */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.left, .right {
+  flex: 1 1 300px;
+  padding: 1rem;
+}
+
+/* Image Styling - No Blur, Glow Animation */
+.blurred-photo {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 15px #ff00cc;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  z-index: 1;
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc;
+  }
+  50% {
+    box-shadow: 0 0 20px #ff66ff, 0 0 30px #ff66ff;
+  }
+  100% {
+    box-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc;
+  }
+}
+
+.blurred-photo:hover {
+  transform: scale(1.05);
+}
+
+/* Right Text Block */
+.right p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* Stylish Buttons */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.glow-btn {
+  padding: 0.8rem 1.5rem;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #ff00cc;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #ff66ff 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 0;
+}
+
+.glow-btn:hover::before {
+  opacity: 0.5;
+  animation: stars 1.5s infinite linear;
+}
+
+.glow-btn:hover {
+  color: #ffccff;
+  box-shadow: 0 0 12px #ff00cc, 0 0 24px #ff00cc;
+}
+
+@keyframes stars {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50%, 50%); }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-size: 0.9rem;
+}
